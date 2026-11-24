@@ -1,22 +1,22 @@
-# Testing vehicle tracking through mist in an automated car wash
+# LiDAR vehicle tracking in mist
 
 Laser scanners at the entrance and exit of the wash bay track the front and rear of each vehicle. On cold days, the controller could mistake a reflection from mist for the front of the car and report that its position had jumped. The operator could still see the car’s outline in the replay. Tightening the filter sometimes made the controller lose the vehicle altogether.
 
 I built an offline test around what the operator could see in those recordings. We compared two models with the controller on the same vehicle edges. The better model put two more edges within tolerance overall. Every reading it changed was on a scan the operator judged clear.
 
-## From recordings to a benchmark
+## Scan data and labels
 
 I decoded recordings from 12 washes at four sites and built a browser review tool. It took the operator straight to moments during loading, the underbody wash and unloading, the three phases when the controller measures the vehicle. The operator could play the surrounding scans, tap the furthest solid return at either end of the car, or mark an edge as absent or uncertain. They recorded mist separately.
 
 Counting front and rear separately, the operator marked 438 visible edges. I split the recordings by whole wash so adjacent frames stayed together. Eight washes supplied 332 marks for development and four supplied 106 for evaluation. Two evaluation washes came from a site outside the development set. A reading passed if it was within 100 mm of the operator’s mark on the replay scale. A missing reading on a visible edge counted as a miss.
 
-## Two ways to find the vehicle edge
+## Tracking models
 
 My first model chose which group of neighbouring laser returns belonged to the edge of the car. I trained a shallow decision tree on Azure Databricks using the distance and strength of the returns, nearby beams and the previous scan. It passed on just half the evaluation marks. The existing programmable logic controller (PLC) was usually the better starting point.
 
 For the second trial I kept the PLC reading by default. A small tree could switch the rear edge to a different group during the underbody wash. A movement rule could adjust the front edge during unloading. I selected those changes by testing across whole washes and sites in the development data, then froze the method and scored it on the same four evaluation washes. I ran this trial locally and tracked it in Azure-hosted MLflow.
 
-## Did it improve?
+## Results
 
 | Method | Within tolerance overall | Within tolerance in confirmed mist |
 |---|---:|---:|
@@ -30,11 +30,11 @@ The correction recovered four misses and moved two previously good readings outs
 
 **I recommended keeping the existing controller.** The PLC and the correction each had 13 errors over 500 mm on the replay scale. The operator’s marks were too far apart to establish whether the correction prevented sudden jumps. To test that, I’d use fresh mist-affected washes and mark the same edge just before, during and after a jump. Before a live trial, I would also check the distances against an independent measurement in the bay and time the correction on the PLC.
 
-## What ran on Azure Databricks
+## Databricks pilot
 
 For the first trial I stored 1,232 observations and 21,457 candidate beam groups in two Unity Catalog managed Delta tables. The job read version 0 of both tables, checked their contents against the staged inputs and logged the model, input hashes and scores in MLflow. The first run failed while reading package metadata after scoring. I fixed the lookup and the rerun reproduced all 99 metric values. [Databricks run extract](evidence/databricks-pilot.json)
 
-## Run the scoring example
+## Scoring example
 
 The public example uses 12 invented observations. Run it from the repository root with Python 3.10 or later.
 
