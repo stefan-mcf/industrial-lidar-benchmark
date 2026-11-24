@@ -1,0 +1,11 @@
+.agent-handoffs/
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+mlruns/
+mlartifacts/
+raw/
+*.ncr
+*.joblib
+.env

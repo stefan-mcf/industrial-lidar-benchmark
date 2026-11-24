@@ -1,0 +1,62 @@
+{
+  "reference": "Operator screen marks, replay scale, inclusive tolerance",
+  "nominal_tolerance_mm": 100,
+  "physical_calibration_verified": false,
+  "sites": 4,
+  "split": {
+    "development": {
+      "cycles": 8,
+      "marked_edges": 332
+    },
+    "held_out_wash": {
+      "cycles": 2,
+      "marked_edges": 38
+    },
+    "held_out_site": {
+      "cycles": 2,
+      "marked_edges": 68
+    }
+  },
+  "historical_evaluation": {
+    "marked_edges": 106,
+    "plc_within": 83,
+    "azure_tree_within": 53,
+    "local_correction_within": 85,
+    "paired_plc_and_correction": {
+      "both_within": 81,
+      "only_plc_within": 2,
+      "only_correction_within": 4,
+      "both_outside_or_missing": 19
+    },
+    "condition": {
+      "confirmed_clear": {
+        "marks": 19,
+        "plc_within": 8,
+        "correction_within": 10
+      },
+      "unreviewed_mist": {
+        "marks": 81,
+        "plc_within": 70,
+        "correction_within": 70
+      },
+      "confirmed_mist": {
+        "marks": 6,
+        "plc_within": 5,
+        "correction_within": 5
+      }
+    },
+    "missing_on_visible": {
+      "plc": 6,
+      "correction": 6
+    },
+    "over_nominal_500_mm": {
+      "plc": 13,
+      "correction": 13
+    },
+    "false_detection_on_absent": {
+      "absent_edges": 6,
+      "plc": 1,
+      "correction": 1
+    }
+  }
+}

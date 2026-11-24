@@ -1,0 +1,13 @@
+recording_id,time_ms,phase,edge,visibility,mist,target_mm,plc_mm,model_mm
+run-01,1000,loading,front,visible,yes,1500,1850,1530
+run-01,1100,loading,front,visible,yes,1480,2000,1490
+run-01,1300,loading,rear,visible,yes,5400,5400,5901
+run-01,1400,loading,rear,visible,unknown,5600.2,5700.2,5500.2
+run-01,2000,underbody,rear,absent,no,,5900,
+run-01,2100,underbody,front,unknown,unknown,,3200,3210
+run-02,300,unloading,front,visible,no,1800,,
+run-02,300,unloading,rear,visible,no,7800,7820,
+run-02,600,unloading,rear,visible,no,7400,8120,8010
+run-02,700,unloading,rear,visible,no,7000,6920,6950
+run-02,900,unloading,front,absent,yes,,,1200
+run-03,800,underbody,front,visible,no,2700,,2725

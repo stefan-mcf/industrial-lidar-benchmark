@@ -1,0 +1,17 @@
+name: Replay checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Test scoring and validation
+        run: python3 -m unittest discover -s example
+      - name: Score the example replay
+        run: python3 example/score.py example/replay.csv
+      - name: Reconcile the historical results with the published run extract
+        run: python3 -m unittest discover -s evidence

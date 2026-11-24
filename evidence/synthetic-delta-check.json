@@ -1,0 +1,36 @@
+{
+  "scope": "Local Spark and MLflow verification of the public synthetic notebook",
+  "runtime": {
+    "spark": "4.0.1",
+    "delta_lake": "4.0.0",
+    "mlflow": "3.17.2"
+  },
+  "widget_inputs": "Emulated catalog and schema widget values",
+  "input_change": "Version 1 sets each visible PLC estimate equal to the synthetic reference.",
+  "sha256": {
+    "databricks/replay.py": "f52c4de72b66ab3c4a3fb5ce6c45fa80d8697fc49a6faf9bb1d17ecee2091558",
+    "example/replay.csv": "b387bca5ada4aea8349f5836283cd405911e0cb25ad6de915d8fbfffb2ab6c98",
+    "example/score.py": "22f23a6bb7368eeeb2783a17868dd399bbf31eea00fb73b63626037c5eec2555"
+  },
+  "runs": [
+    {
+      "latest_table_version": 0,
+      "input_version": 0,
+      "mlflow_status": "FINISHED",
+      "logged_metrics": 15,
+      "plc_within": 4,
+      "model_within": 5,
+      "visible": 9
+    },
+    {
+      "latest_table_version": 1,
+      "input_version": 0,
+      "mlflow_status": "FINISHED",
+      "logged_metrics": 15,
+      "plc_within": 4,
+      "model_within": 5,
+      "visible": 9
+    }
+  ],
+  "paired_counts_artifacts_match_python_scorer": true
+}

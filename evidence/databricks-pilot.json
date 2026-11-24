@@ -1,0 +1,107 @@
+{
+  "source": "Allowlisted fields from saved Azure Databricks Jobs, Delta and MLflow records",
+  "job_settings": {
+    "max_concurrent_runs": 1,
+    "timeout_seconds": 3600,
+    "tasks": [
+      {
+        "task_key": "train_and_compare",
+        "timeout_seconds": 3000,
+        "new_cluster": {
+          "spark_version": "16.4.x-cpu-ml-scala2.12",
+          "node_type_id": "Standard_E4ds_v6",
+          "num_workers": 0,
+          "runtime_engine": "STANDARD"
+        }
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "jobs_result_state": "FAILED",
+      "mlflow_status": "FAILED",
+      "terminal_cluster_state": "TERMINATED"
+    },
+    {
+      "attempt": 2,
+      "jobs_result_state": "SUCCESS",
+      "mlflow_status": "FINISHED",
+      "terminal_cluster_state": "TERMINATED"
+    }
+  ],
+  "managed_delta_inputs": {
+    "observations": {
+      "format": "DELTA",
+      "table_type": "MANAGED",
+      "version": 0,
+      "rows": 1232
+    },
+    "candidates": {
+      "format": "DELTA",
+      "table_type": "MANAGED",
+      "version": 0,
+      "rows": 21457
+    }
+  },
+  "mlflow_metrics_matching_across_attempts": 99,
+  "mlflow_metrics": [
+    {
+      "key": "held_out_wash.plc.marked",
+      "value": 38
+    },
+    {
+      "key": "held_out_wash.plc.within_nominal_100mm",
+      "value": 28
+    },
+    {
+      "key": "held_out_wash.rule.marked",
+      "value": 38
+    },
+    {
+      "key": "held_out_wash.rule.within_nominal_100mm",
+      "value": 22
+    },
+    {
+      "key": "held_out_wash.tree.marked",
+      "value": 38
+    },
+    {
+      "key": "held_out_wash.tree.within_nominal_100mm",
+      "value": 24
+    },
+    {
+      "key": "held_out_site.plc.marked",
+      "value": 68
+    },
+    {
+      "key": "held_out_site.plc.within_nominal_100mm",
+      "value": 55
+    },
+    {
+      "key": "held_out_site.rule.marked",
+      "value": 68
+    },
+    {
+      "key": "held_out_site.rule.within_nominal_100mm",
+      "value": 44
+    },
+    {
+      "key": "held_out_site.tree.marked",
+      "value": 68
+    },
+    {
+      "key": "held_out_site.tree.within_nominal_100mm",
+      "value": 29
+    }
+  ],
+  "pilot_compute_and_disk_estimate": {
+    "currency": "AUD",
+    "range": [
+      0.25,
+      0.32
+    ],
+    "tax_included": false,
+    "actual_cost_at_time_of_check": null
+  }
+}
