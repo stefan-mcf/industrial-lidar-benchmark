@@ -3,6 +3,14 @@
   "nominal_tolerance_mm": 100,
   "physical_calibration_verified": false,
   "sites": 4,
+  "annotation": {
+    "guided_prompts": 24,
+    "guided_completed": 24,
+    "recordings_reviewed": 12,
+    "in_scope_reviewed_frames": 409,
+    "visible_front_marks": 189,
+    "visible_rear_marks": 249
+  },
   "split": {
     "development": {
       "cycles": 8,
@@ -15,6 +23,18 @@
     "held_out_site": {
       "cycles": 2,
       "marked_edges": 68
+    }
+  },
+  "development_by_held_out_group": {
+    "recording": {
+      "marked_edges": 332,
+      "plc_within": 262,
+      "local_correction_within": 285
+    },
+    "site": {
+      "marked_edges": 332,
+      "plc_within": 262,
+      "local_correction_within": 275
     }
   },
   "historical_evaluation": {
