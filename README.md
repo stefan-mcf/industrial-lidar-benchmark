@@ -28,6 +28,8 @@ The correction recovered four misses and moved two previously good readings outs
 
 ![Paired results for 106 vehicle edges. Both the PLC and correction passed on 81, only the correction passed on four, only the PLC passed on two, and both missed on 19.](evidence/paired-outcomes.png)
 
+## Conclusion
+
 **I recommended keeping the existing controller.** The PLC and the correction each had 13 errors over 500 mm on the replay scale. The operator’s marks were too far apart to establish whether the correction prevented sudden jumps. To test that, I’d use fresh mist-affected washes and mark the same edge just before, during and after a jump. Before a live trial, I would also check the distances against an independent measurement in the bay and time the correction on the PLC.
 
 ## Databricks pilot
