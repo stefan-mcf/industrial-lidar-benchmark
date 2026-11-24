@@ -42,7 +42,8 @@
       "confirmed_mist": {
         "marks": 6,
         "plc_within": 5,
-        "correction_within": 5
+        "correction_within": 5,
+        "azure_tree_within": 6
       }
     },
     "missing_on_visible": {
